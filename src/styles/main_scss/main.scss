@@ -1,9 +1,14 @@
-@import "reset";
-@import "variables";
-@import "mixins";
-@import "layout";
-@import "typography";
-@import "animations";
+// @import "variables";
+// @import "mixins";
+// @import "layout";
+// @import "typography";
+// @import "animations";
+@use "../variables/_base/base" as base;
+
+*{
+  margin: 0;
+  padding: 0;
+}
 
 .app {
   min-height: 100vh;
@@ -14,3 +19,11 @@
     flex: 1;
   }
 }
+
+body {
+  height: 100%;
+  font-family: base.$font-family-base;
+  font-size: base.$font-size-base;
+  line-height: base.$line-height-base;
+}
+
