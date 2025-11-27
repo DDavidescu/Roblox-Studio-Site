@@ -1,0 +1,16 @@
+@import "reset";
+@import "variables";
+@import "mixins";
+@import "layout";
+@import "typography";
+@import "animations";
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    flex: 1;
+  }
+}
