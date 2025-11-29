@@ -6,7 +6,7 @@ import "./styles/main_scss/main.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/Roblox-Studio-Site">
       <App />
     </BrowserRouter>
   </React.StrictMode>

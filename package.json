@@ -1,7 +1,7 @@
 {
   "name": "proiect-tibi",
   "version": "1.0.0",
-  "homepage": "https://DDavidescu.github.io/Roblox-Studio-Site",
+  "homepage": "https://ddavidescu.github.io/Roblox-Studio-Site/",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
