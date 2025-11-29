@@ -1,0 +1,117 @@
+// src/sections/home/OurStudioSection.scss
+
+.our-studio {
+  position: relative;
+  padding: clamp(4rem, 8vh, 6rem) 0;
+  background:
+    radial-gradient(circle at top left, #22c55e1a 0, transparent 55%),
+    radial-gradient(circle at bottom right, #38bdf81a 0, transparent 55%),
+    linear-gradient(135deg, #020617 0%, #020617 40%, #020617 100%);
+  color: #e5e7eb;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.16;
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: radial-gradient(circle at center, #000 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    width: min(1400px, 100%);
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 3vw, 3rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.1fr);
+    gap: clamp(3rem, 5vw, 4.5rem);
+    align-items: center;
+    z-index: 1;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 560px;
+  }
+
+  &__eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #a5b4fc;
+    margin: 0;
+  }
+
+  &__title {
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: #f9fafb;
+    margin: 0;
+  }
+
+  &__subtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #9ca3af;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #d1d5db;
+    max-width: 38rem;
+  }
+
+  &__pillars {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+    align-items: stretch;
+  }
+
+  &__visual-wrapper {
+    position: relative;
+    min-height: 340px;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 1024px) {
+    &__inner {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 3rem;
+    }
+
+    &__content {
+      max-width: none;
+    }
+
+    &__visual-wrapper {
+      order: -1;
+      min-height: 280px;
+      justify-content: stretch;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 3.5rem 0;
+
+    &__pillars {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.9rem;
+    }
+  }
+}

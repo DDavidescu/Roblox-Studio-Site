@@ -1,0 +1,63 @@
+/* src/components/filters/GamesFilterBar.scss */
+
+.games-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.games-filter-bar__primary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.games-filter-bar__secondary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: center;
+}
+
+.games-filter-bar__select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.games-filter-bar__label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.games-filter-bar__select {
+  min-width: 9rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.2), #020617);
+  color: #e5e7eb;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.games-filter-bar--compact {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .games-filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .games-filter-bar__secondary {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

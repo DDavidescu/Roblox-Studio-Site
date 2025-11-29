@@ -1,0 +1,61 @@
+/* src/sections/games/GamesGridSection.scss */
+
+.games-grid-section {
+  position: relative;
+  padding: 2.5rem 0 3rem;
+}
+
+.games-grid-section__inner {
+  width: min(1400px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 3vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.games-grid-section__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.games-grid-section__eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.games-grid-section__title {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.games-grid-section__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.games-grid-section__empty {
+  border-radius: 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px dashed rgba(148, 163, 184, 0.5);
+  font-size: 0.9rem;
+  color: rgba(148, 163, 184, 0.95);
+}
+
+@media (max-width: 1024px) {
+  .games-grid-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .games-grid-section__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

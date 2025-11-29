@@ -2,7 +2,7 @@ import React, { useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
-import "../../styles/sections_scss/home_sections_scss/hero_section.css";
+import "../../styles/sections_scss/home_sections_scss/heroSection/hero_section.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +13,9 @@ const HeroSection = () => {
   const scrollRef = useRef(null);
 
   useLayoutEffect(() => {
+    const heroEl = heroRef.current;
+    if (!heroEl) return;
+
     const ctx = gsap.context(() => {
       const leftItems = leftRef.current
         ? leftRef.current.querySelectorAll('[data-animate="left"]')
@@ -48,6 +51,7 @@ const HeroSection = () => {
           "-=0.4"
         );
 
+      // idle float for cards / pills / tags
       const floatTargets = rightRef.current
         ? rightRef.current.querySelectorAll("[data-float]")
         : [];
@@ -64,6 +68,23 @@ const HeroSection = () => {
         });
       });
 
+      // idle float for orbs (no cursor interaction)
+      const orbEls = rightRef.current
+        ? rightRef.current.querySelectorAll("[data-orb]")
+        : [];
+
+      orbEls.forEach((el, index) => {
+        gsap.to(el, {
+          y: index % 2 === 0 ? -18 : 20,
+          x: index % 2 === 0 ? -10 : 14,
+          duration: 4 + index * 0.8,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
+      });
+
+      // parallax on scroll for whole visual cluster
       if (heroRef.current && rightRef.current) {
         ScrollTrigger.create({
           trigger: heroRef.current,
@@ -78,9 +99,122 @@ const HeroSection = () => {
           },
         });
       }
-    }, heroRef);
+    }, heroEl);
 
-    return () => ctx.revert();
+    // headline per-letter interaction (kept)
+    let heroBounds = heroEl.getBoundingClientRect();
+    const pointer = {
+      x: heroBounds.left + heroBounds.width / 2,
+      y: heroBounds.top + heroBounds.height / 2,
+    };
+    const pointerSmooth = { ...pointer };
+
+    const titleEl = leftRef.current
+      ? leftRef.current.querySelector(".title")
+      : null;
+
+    let letterMeta = [];
+
+    if (titleEl) {
+      const text = titleEl.textContent || "";
+      titleEl.innerHTML = "";
+
+      const words = text.split(" ");
+
+      words.forEach((word, wIndex) => {
+        const wordSpan = document.createElement("span");
+        wordSpan.classList.add("titleWord");
+
+        word.split("").forEach((char, charIndex) => {
+          const span = document.createElement("span");
+          span.textContent = char;
+          span.classList.add("titleChar");
+          span.dataset.index = String(charIndex);
+          wordSpan.appendChild(span);
+        });
+
+        titleEl.appendChild(wordSpan);
+
+        if (wIndex < words.length - 1) {
+          titleEl.appendChild(document.createTextNode(" "));
+        }
+      });
+
+      const letterEls = Array.from(
+        titleEl.querySelectorAll(".titleChar")
+      );
+
+      const rebuildLetterMeta = () => {
+        letterMeta = letterEls.map((el) => {
+          const rect = el.getBoundingClientRect();
+          return {
+            el,
+            cx: rect.left + rect.width / 2,
+            cy: rect.top + rect.height / 2,
+          };
+        });
+      };
+
+      rebuildLetterMeta();
+      requestAnimationFrame(rebuildLetterMeta);
+
+      const onPointerMove = (e) => {
+        pointer.x = e.clientX;
+        pointer.y = e.clientY;
+      };
+
+      const onResize = () => {
+        heroBounds = heroEl.getBoundingClientRect();
+        rebuildLetterMeta();
+      };
+
+      heroEl.addEventListener("pointermove", onPointerMove);
+      window.addEventListener("resize", onResize);
+
+      const updateFromPointer = () => {
+        pointerSmooth.x += (pointer.x - pointerSmooth.x) * 0.16;
+        pointerSmooth.y += (pointer.y - pointerSmooth.y) * 0.16;
+
+        if (!letterMeta.length) return;
+
+        const maxLetterRadius = 200;
+
+        letterMeta.forEach(({ el, cx, cy }) => {
+          const dx = pointerSmooth.x - cx;
+          const dy = pointerSmooth.y - cy;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const falloff = Math.max(0, 1 - dist / maxLetterRadius);
+
+          const lift = -6 * falloff;
+          const z = 18 * falloff;
+          const hue = 220 + 30 * falloff;
+
+          gsap.to(el, {
+            y: lift,
+            z,
+            color: `hsl(${hue}, 95%, ${60 + 10 * falloff}%)`,
+            duration: 0.35,
+            ease: "power2.out",
+            transformPerspective: 600,
+            force3D: true,
+            overwrite: "auto",
+          });
+        });
+      };
+
+      gsap.ticker.add(updateFromPointer);
+
+      return () => {
+        heroEl.removeEventListener("pointermove", onPointerMove);
+        window.removeEventListener("resize", onResize);
+        gsap.ticker.remove(updateFromPointer);
+        ctx.revert();
+      };
+    }
+
+    return () => {
+      ctx.revert();
+    };
   }, []);
 
   const handleScrollClick = () => {
@@ -103,12 +237,13 @@ const HeroSection = () => {
           </p>
 
           <h1 className="title" id="hero-heading" data-animate="left">
-            Motion-first Roblox experiences that feel premium.
+            Lorem ipsum dolor sit amet, consectetur adipisicing.
           </h1>
 
           <p className="subtitle" data-animate="left">
-            We design, build, and optimize Roblox games with smooth animation
-            systems, responsive UI, and battle-tested live ops tooling.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+            laborum doloremque porro maiores eveniet, soluta corporis quo! Odio,
+            totam deserunt.
           </p>
 
           <div className="ctaRow" data-animate="left">
@@ -118,7 +253,7 @@ const HeroSection = () => {
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.97, y: 0 }}
             >
-              Schedule a call
+              Lorem, ipsum.
             </motion.button>
           </div>
         </div>
@@ -128,31 +263,41 @@ const HeroSection = () => {
           ref={rightRef}
           aria-hidden="true"
         >
-          <div className="glow" data-animate="right" data-float />
+          <div className="glow" data-animate="right" />
 
-          <div className="orbPrimary" data-animate="right" data-float />
+          <div
+            className="orbPrimary"
+            data-animate="right"
+            data-orb
+            data-depth="0.3"
+          />
 
-          <div className="orbSecondary" data-animate="right" data-float />
+          <div
+            className="orbSecondary"
+            data-animate="right"
+            data-orb
+            data-depth="0.22"
+          />
 
           <div className="cardMain" data-animate="right" data-float>
-            <span className="cardLabel">Session replay</span>
-            <span className="cardValue">Every frame, perfectly timed</span>
+            <span className="cardLabel">Lorem, ipsum.</span>
+            <span className="cardValue">Lorem ipsum dolor sit.</span>
           </div>
 
           <div className="pill" data-animate="right" data-float>
             <span className="pillDot" />
-            <span className="pillText">60+ FPS gameplay loops</span>
+            <span className="pillText">Lorem, ipsum dolor.</span>
           </div>
 
           <div className="tagCluster">
             <span className="tag" data-animate="right" data-float>
-              #CinematicUX
+              Lorem, ipsum.
             </span>
             <span className="tag" data-animate="right" data-float>
-              #NetcodeReady
+              Lorem, ipsum.
             </span>
             <span className="tag" data-animate="right" data-float>
-              #LiveOps
+              Lorem, ipsum.
             </span>
           </div>
         </div>

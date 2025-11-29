@@ -1,0 +1,235 @@
+/* src/components/cards/GameCard.scss */
+.game-card {
+  position: relative;
+  background: radial-gradient(circle at top left, #020617, #020617 45%, #020617);
+  border-radius: 1.25rem;
+  padding: 0.18rem;
+  overflow: hidden;
+  scroll-snap-align: start;
+  min-width: 270px;
+  max-width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.85),
+    0 0 0 1px rgba(15, 23, 42, 0.9);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  isolation: isolate;
+
+  @media (min-width: 769px) {
+    min-width: 0;
+  }
+
+  &__spotlight {
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(
+      circle at var(--mx, 50%) var(--my, 50%),
+      rgba(248, 250, 252, 0.18) 0,
+      transparent 55%
+    );
+    opacity: 0;
+    transition: opacity 220ms ease-out;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  &__glow {
+    position: absolute;
+    inset: -10%;
+    background:
+      radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.25), transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.25), transparent 50%);
+    opacity: 0;
+    mix-blend-mode: screen;
+    transition: opacity 220ms ease-out;
+    z-index: -2;
+  }
+
+  &:hover {
+    .game-card__spotlight {
+      opacity: 1;
+    }
+
+    .game-card__glow {
+      opacity: 0.65;
+    }
+  }
+
+  &__media-layer {
+    position: relative;
+    border-radius: inherit;
+    overflow: hidden;
+    margin-bottom: 0.9rem;
+  }
+
+  &__media {
+    position: relative;
+    border-radius: calc(1.25rem - 0.18rem);
+    overflow: hidden;
+    max-height: 180px;
+  }
+
+  &__media-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-origin: center;
+    transform: translateZ(0);
+    transition: transform 320ms ease-out;
+  }
+
+  &:hover &__media-img {
+    transform: scale(1.04);
+  }
+
+  &__media-gradient {
+    position: absolute;
+    inset: auto 0 0;
+    height: 45%;
+    background: linear-gradient(
+      to top,
+      rgba(15, 23, 42, 0.95),
+      transparent
+    );
+  }
+
+  &__content {
+    position: relative;
+    padding: 0.95rem 1.05rem 1.1rem;
+    border-radius: calc(1.25rem - 0.18rem);
+    background: radial-gradient(
+        circle at top left,
+        rgba(37, 99, 235, 0.16),
+        transparent 55%
+      ),
+      radial-gradient(
+        circle at bottom right,
+        rgba(168, 85, 247, 0.16),
+        transparent 55%
+      ),
+      linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+    backdrop-filter: blur(16px);
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.65rem;
+  }
+
+  &__tag {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #e5e7eb;
+    background: linear-gradient(
+      135deg,
+      rgba(51, 65, 85, 0.9),
+      rgba(30, 64, 175, 0.9)
+    );
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    white-space: nowrap;
+  }
+
+  &__title {
+    font-size: 1rem;
+    margin: 0 0 0.35rem;
+    letter-spacing: -0.01em;
+  }
+
+  &__description {
+    margin: 0 0 0.8rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #cbd5f5;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  &__stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.78rem;
+  }
+
+  &__stat-label {
+    display: block;
+    color: #9ca3af;
+  }
+
+  &__stat-value {
+    font-weight: 600;
+    color: #e5e7eb;
+  }
+
+  &__cta {
+    position: relative;
+    border: none;
+    outline: none;
+    border-radius: 999px;
+    padding: 0.55rem 1.15rem;
+    background: radial-gradient(circle at 0 0, #4f46e5, #2563eb);
+    color: #e5e7eb;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    overflow: hidden;
+  }
+
+  &__cta-label {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__cta-orbit {
+    position: absolute;
+    inset: -40%;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle at 0 0,
+      rgba(248, 250, 252, 0.5),
+      transparent 50%
+    );
+    opacity: 0;
+    transform: translate3d(-30%, -30%, 0);
+    animation: ctaOrbit 4s linear infinite;
+  }
+
+  &:hover &__cta-orbit {
+    opacity: 0.6;
+  }
+}
+
+@keyframes ctaOrbit {
+  0% {
+    transform: translate3d(-30%, -30%, 0);
+  }
+  25% {
+    transform: translate3d(30%, -30%, 0);
+  }
+  50% {
+    transform: translate3d(30%, 30%, 0);
+  }
+  75% {
+    transform: translate3d(-30%, 30%, 0);
+  }
+  100% {
+    transform: translate3d(-30%, -30%, 0);
+  }
+}

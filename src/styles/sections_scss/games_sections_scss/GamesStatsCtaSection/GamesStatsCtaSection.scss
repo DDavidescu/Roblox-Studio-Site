@@ -1,0 +1,105 @@
+/* src/sections/games/GamesStatsCtaSection.scss */
+
+.games-stats-cta {
+  position: relative;
+  padding: 2.5rem 0 3.5rem;
+}
+
+.games-stats-cta__inner {
+  width: min(1400px, 100%);
+  margin: 0 auto 1rem;
+  padding: 1.4rem clamp(1.5rem, 3vw, 3rem);
+  border-radius: 1.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background:
+    radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.4), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(94, 234, 212, 0.4), transparent 55%),
+    rgba(15, 23, 42, 0.96);
+  display: flex;
+  justify-content: space-between;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.games-stats-cta__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.games-stats-cta__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.games-stats-cta__stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(148, 163, 184, 0.95);
+}
+
+.games-stats-cta__stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.games-stats-cta__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.games-stats-cta__btn {
+  font-size: 0.85rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    background 0.16s ease,
+    border-color 0.16s ease;
+}
+
+.games-stats-cta__btn--primary {
+  background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.5), #0f172a);
+  border-color: rgba(56, 189, 248, 0.9);
+  color: #f9fafb;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
+}
+
+.games-stats-cta__btn--ghost {
+  background: transparent;
+  border-color: rgba(148, 163, 184, 0.7);
+  color: #e5e7eb;
+}
+
+.games-stats-cta__btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 36px rgba(56, 189, 248, 0.9);
+}
+
+.games-stats-cta__btn--ghost:hover {
+  transform: translateY(-1px);
+  background: rgba(15, 23, 42, 0.85);
+}
+
+@media (max-width: 900px) {
+  .games-stats-cta__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .games-stats-cta__ctas {
+    width: 100%;
+  }
+
+  .games-stats-cta__btn {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}

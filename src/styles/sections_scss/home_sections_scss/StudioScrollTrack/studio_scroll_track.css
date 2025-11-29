@@ -1,0 +1,74 @@
+.studio-scroll {
+  position: relative;
+  height: 100vh;
+  background: radial-gradient(circle at top left, #111827 0, #020617 55%), #020617;
+  color: #f9fafb;
+  overflow: hidden;
+}
+.studio-scroll__inner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: clamp(2rem, 4vh, 3rem) 0;
+  display: flex;
+  flex-direction: column;
+}
+.studio-scroll__label {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin: 0 0 2rem 2rem;
+}
+.studio-scroll__viewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.studio-scroll__slides {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  will-change: transform;
+}
+.studio-scroll__slide {
+  flex: 0 0 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2rem;
+}
+.studio-scroll__heading {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+.studio-scroll__body {
+  max-width: 48rem;
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  line-height: 1.6;
+  color: #d1d5db;
+}
+@media (max-width: 768px) {
+  .studio-scroll__inner {
+    padding: 1.5rem 0;
+  }
+  .studio-scroll__label {
+    margin: 0 0 1.25rem 1.25rem;
+  }
+  .studio-scroll__slide {
+    padding: 0 1.25rem;
+  }
+  .studio-scroll__heading {
+    font-size: 1.6rem;
+  }
+  .studio-scroll__body {
+    font-size: 0.95rem;
+  }
+}/*# sourceMappingURL=studio_scroll_track.css.map */
