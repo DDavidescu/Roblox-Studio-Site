@@ -1,6 +1,7 @@
 {
   "name": "proiect-tibi",
   "version": "1.0.0",
+  "homepage": "https://DDavidescu.github.io/Roblox-Studio-Site",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
@@ -27,7 +28,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "gh-pages": "^6.2.0",
+    "gh-pages": "^6.3.0",
     "prettier": "^3.6.2",
     "vite": "^7.2.4"
   }
