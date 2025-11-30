@@ -1,0 +1,51 @@
+/* src/components/ui/Accordion.scss */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.accordion__item {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: radial-gradient(circle at top left, #22c55e0d, #020617);
+  overflow: hidden;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.accordion__item--open {
+  border-color: rgba(94, 234, 212, 0.7);
+}
+
+.accordion__header {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.accordion__question {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.accordion__icon {
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+.accordion__body {
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.accordion__answer {
+  padding: 0 1.1rem 0.9rem;
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
