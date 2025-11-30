@@ -1,0 +1,9 @@
+/* src/pages/Careers/CareersPage.scss */
+.careers-page {
+  background:
+    radial-gradient(circle at top left, #22c55e1a 0, transparent 55%),
+    radial-gradient(circle at bottom right, #38bdf81a 0, transparent 55%),
+    linear-gradient(135deg, #020617 0%, #020617 40%, #020617 100%);
+  color: #e5e7eb;
+  min-height: 100vh;
+}
