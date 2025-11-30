@@ -1,0 +1,82 @@
+/* src/components/cards/JobModal.scss */
+.job-modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.96), #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+.job-modal {
+  position: relative;
+  width: min(720px, 92vw);
+  max-height: 85vh;
+  overflow: auto;
+  padding: 1.4rem 1.4rem 1.6rem;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  background:
+    radial-gradient(circle at top left, #22c55e1a, transparent 50%),
+    radial-gradient(circle at bottom right, #0ea5e91a, transparent 50%),
+    #020617;
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.95);
+}
+
+.job-modal__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.job-modal__title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}
+
+.job-modal__meta {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-bottom: 0.7rem;
+}
+
+.job-modal__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.job-modal__section {
+  margin-bottom: 1rem;
+}
+
+.job-modal__section h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.job-modal__section p {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}
+
+.job-modal__section ul {
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.job-modal__section li {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+}

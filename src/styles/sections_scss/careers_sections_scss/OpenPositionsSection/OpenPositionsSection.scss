@@ -1,0 +1,56 @@
+/* src/sections/careers/OpenPositionsSection.scss */
+.careers-open {
+  padding: clamp(3.5rem, 8vh, 5rem) 0;
+}
+
+.careers-open__inner {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 3.5vw, 3rem);
+}
+
+.careers-open__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.careers-open__eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #a5b4fc;
+}
+
+.careers-open__title {
+  font-size: 1.7rem;
+  margin-top: 0.3rem;
+}
+
+.careers-open__subtitle {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: #cbd5f5;
+  max-width: 34rem;
+}
+
+.careers-open__list {
+  margin-top: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.careers-open__empty {
+  grid-column: 1 / -1;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+@media (max-width: 900px) {
+  .careers-open__list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
