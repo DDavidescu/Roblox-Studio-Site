@@ -1,1 +1,6 @@
-/*# sourceMappingURL=CareersPage.css.map */
+/* src/pages/Careers/CareersPage.scss */
+.careers-page {
+  background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.1019607843) 0, transparent 55%), radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.1019607843) 0, transparent 55%), linear-gradient(135deg, #020617 0%, #020617 40%, #020617 100%);
+  color: #e5e7eb;
+  min-height: 100vh;
+}/*# sourceMappingURL=CareersPage.css.map */

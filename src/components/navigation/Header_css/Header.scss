@@ -5,7 +5,8 @@
   display: flex;
   align-items: center;
 
-  background: radial-gradient(circle at top left, #1d4ed81a 0, transparent 55%),
+  background:
+    radial-gradient(circle at top left, #1d4ed81a 0, transparent 55%),
     radial-gradient(circle at bottom right, #a855f71a 0, transparent 55%),
     #020617f5;
   backdrop-filter: blur(18px);
@@ -14,7 +15,7 @@
   .header__inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;  // keeps links on the right
+    justify-content: space-between; // keeps links on the right
     width: 100%;
     padding-inline: clamp(1.5rem, 4vw, 3rem);
   }
@@ -59,7 +60,9 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding-bottom: 0.25rem;
-    transition: color 0.2s ease, opacity 0.2s ease;
+    transition:
+      color 0.2s ease,
+      opacity 0.2s ease;
 
     &::after {
       content: "";
@@ -96,8 +99,7 @@
     }
 
     .header__nav {
-      gap: 1.25rem;
-      font-size: 0.8rem;
+      display: none;
     }
   }
 

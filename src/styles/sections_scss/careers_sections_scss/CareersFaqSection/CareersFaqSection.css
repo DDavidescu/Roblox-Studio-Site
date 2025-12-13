@@ -1,0 +1,33 @@
+/* src/sections/careers/CareersFaqSection.scss */
+.careers-faq {
+  padding: clamp(3.5rem, 8vh, 5rem) 0;
+}
+
+.careers-faq__inner {
+  width: min(900px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 3.5vw, 3rem);
+}
+
+.careers-faq__header {
+  max-width: 34rem;
+  margin-bottom: 1.6rem;
+}
+
+.careers-faq__eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #a5b4fc;
+}
+
+.careers-faq__title {
+  font-size: 1.7rem;
+  margin-top: 0.3rem;
+}
+
+.careers-faq__subtitle {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  color: #cbd5f5;
+}/*# sourceMappingURL=CareersFaqSection.css.map */

@@ -81,8 +81,7 @@
     padding-inline: 1.25rem;
   }
   .header .header__nav {
-    gap: 1.25rem;
-    font-size: 0.8rem;
+    display: none;
   }
 }
 @media (max-width: 640px) {
