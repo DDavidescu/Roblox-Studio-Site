@@ -4,7 +4,8 @@
   z-index: 0;
   padding: clamp(4rem, 8vh, 6rem) 0 clamp(5rem, 10vh, 7rem);
   background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.1333333333) 0, transparent 55%), radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.1333333333) 0, transparent 55%), linear-gradient(145deg, #020617 0%, #020617 45%, #020617 100%);
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: hidden;
   color: #f9fafb;
 }
 .featured-games__inner {
@@ -12,6 +13,8 @@
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 3vw, 3rem);
   position: relative;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 .featured-games__bg-layer {
   position: absolute;
@@ -75,6 +78,14 @@
   gap: clamp(1.5rem, 2vw, 2rem);
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-auto-rows: minmax(230px, 1fr);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  /* critical: prevent grid items from forcing overflow */
+}
+.featured-games__grid > * {
+  min-width: 0;
+  max-width: 100%;
 }
 @media (max-width: 1024px) {
   .featured-games__grid {
@@ -85,20 +96,38 @@
   .featured-games__grid {
     display: flex;
     overflow-x: auto;
-    padding-bottom: 0.75rem;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     gap: 1rem;
+    padding-bottom: 0.9rem;
+    padding-left: 1.5rem;
+    scrollbar-color: rgba(99, 102, 241, 0.9) rgba(148, 163, 184, 0.12);
+    scrollbar-width: thin;
+  }
+  .featured-games__grid > * {
+    flex: 0 0 auto;
+    width: clamp(280px, 82vw, 360px);
+    scroll-snap-align: start;
+  }
+  .featured-games__grid::after {
+    content: "";
+    flex: 0 0 1.5rem;
   }
   .featured-games__grid::-webkit-scrollbar {
-    height: 5px;
+    height: 8px;
   }
   .featured-games__grid::-webkit-scrollbar-track {
-    background: transparent;
+    background: rgba(148, 163, 184, 0.12);
+    border-radius: 999px;
   }
   .featured-games__grid::-webkit-scrollbar-thumb {
-    background: rgba(148, 163, 184, 0.5);
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.75), rgba(168, 85, 247, 0.75));
     border-radius: 999px;
+    border: 2px solid rgba(2, 6, 23, 0.65);
+  }
+  .featured-games__grid::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.95), rgba(168, 85, 247, 0.95));
   }
 }
 

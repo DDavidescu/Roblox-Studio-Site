@@ -3,6 +3,18 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { useTiltParallax } from "../../animations/motion/useTiltParallax";
 import "./GameCard_css/GameCard.scss";
+import placeholderImg from "../../assets/images/games/placeholder.webp";
+
+const cardVariants = {
+  rest: { scale: 1 },
+  hover: { scale: 1.02 },
+};
+
+const ctaVariants = {
+  rest: { scale: 1, y: 0 },
+  hover: { scale: 1.04, y: -1 },
+  tap: { scale: 0.98, y: 0 },
+};
 
 function GameCard({ game }) {
   if (!game) return null;
@@ -17,7 +29,6 @@ function GameCard({ game }) {
     tags,
     ctaLabel = "Play now",
 
-    // support both old + new shapes and guard undefined
     playerCount: rawPlayerCount,
     players: rawPlayers,
     visits: rawVisits,
@@ -27,10 +38,7 @@ function GameCard({ game }) {
   const toSafeNumber = (value, fallback = 0) =>
     typeof value === "number" && !Number.isNaN(value) ? value : fallback;
 
-  const playerCount = toSafeNumber(
-    rawPlayerCount ?? rawPlayers,
-    0
-  );
+  const playerCount = toSafeNumber(rawPlayerCount ?? rawPlayers, 0);
   const visits = toSafeNumber(rawVisits, 0);
   const likes = toSafeNumber(rawLikes, 0);
 
@@ -43,22 +51,27 @@ function GameCard({ game }) {
       style={motionStyle}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      whileHover={{ scale: 1.02 }}
-      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      variants={cardVariants}
+      initial="rest"
+      animate="rest"
+      whileHover="hover"
+      transition={{ type: "spring", stiffness: 260, damping: 22 }}
     >
       <div className="game-card__spotlight" />
       <div className="game-card__glow" />
 
       <div className="game-card__media-layer">
         <div className="game-card__media">
-          {thumbnail && (
-            <img
-              src={thumbnail}
-              alt={title}
-              loading="lazy"
-              className="game-card__media-img"
-            />
-          )}
+          <img
+            src={thumbnail || game.heroImage || placeholderImg}
+            alt={title}
+            loading="lazy"
+            className="game-card__media-img"
+            onError={(e) => {
+              e.currentTarget.src = placeholderImg;
+            }}
+          />
+
           <div className="game-card__media-gradient" />
         </div>
       </div>
@@ -104,16 +117,14 @@ function GameCard({ game }) {
 
           <motion.button
             className="game-card__cta"
-            whileHover={{
-              scale: 1.03,
-              boxShadow: "0 0 32px rgba(59, 130, 246, 0.7)",
-            }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: "spring", stiffness: 280, damping: 18 }}
+            variants={ctaVariants}
+            whileTap="tap"
+            transition={{ type: "spring", stiffness: 500, damping: 30 }}
             type="button"
           >
             <span className="game-card__cta-label">{ctaLabel}</span>
             <span className="game-card__cta-orbit" />
+            <span className="game-card__cta-glow" aria-hidden="true" />
           </motion.button>
         </div>
       </div>
