@@ -1,0 +1,111 @@
+.process {
+  position: relative;
+  padding: clamp(4rem, 9vh, 5rem) 0;
+  background: radial-gradient(circle at top, #020617, #020617 70%), radial-gradient(circle at bottom, #020617, #020617 80%);
+  color: #e5e7eb;
+}
+
+.process__inner {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 3vw, 3rem);
+}
+
+.process__header {
+  max-width: 40rem;
+  margin-bottom: 2.5rem;
+}
+
+.process__eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+  margin-bottom: 0.75rem;
+}
+
+.process__title {
+  font-size: clamp(1.8rem, 2.3vw, 2.1rem);
+  margin-bottom: 0.75rem;
+}
+
+.process__intro {
+  font-size: 0.98rem;
+  color: #cbd5f5;
+  max-width: 34rem;
+}
+
+.process__track {
+  margin-top: 2.25rem;
+}
+
+.process__progress {
+  position: relative;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(30, 64, 175, 0.5);
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+}
+
+.process__progress-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #38bdf8, #a855f7);
+  transform-origin: left center;
+}
+
+.process__steps {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.process__step {
+  position: relative;
+  padding: 1.3rem 1.2rem 1.4rem;
+  border-radius: 1.2rem;
+  background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 60%), rgba(15, 23, 42, 0.96);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9), 0 0 0 1px rgba(15, 23, 42, 0.96);
+}
+
+.process__step-index {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  margin-bottom: 0.55rem;
+  color: #cbd5f5;
+}
+
+.process__step-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.process__step-title {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.process__step-text {
+  font-size: 0.9rem;
+  color: #d1d5db;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .process__steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .process__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}/*# sourceMappingURL=ProcessSection.css.map */

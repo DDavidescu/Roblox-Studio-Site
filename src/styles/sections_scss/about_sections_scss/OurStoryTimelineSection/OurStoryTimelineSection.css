@@ -1,0 +1,115 @@
+.story-timeline {
+  position: relative;
+  padding: clamp(4rem, 9vh, 5rem) 0;
+  background: radial-gradient(circle at top, #020617, #020617 70%);
+  color: #e5e7eb;
+}
+
+.story-timeline__inner {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 3vw, 3rem);
+}
+
+.story-timeline__header {
+  max-width: 42rem;
+  margin-bottom: 3rem;
+}
+
+.story-timeline__eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+  margin-bottom: 0.75rem;
+}
+
+.story-timeline__title {
+  font-size: clamp(1.8rem, 2.4vw, 2.1rem);
+  margin-bottom: 0.75rem;
+}
+
+.story-timeline__intro {
+  font-size: 0.98rem;
+  color: #cbd5f5;
+  max-width: 38rem;
+}
+
+.story-timeline__body {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 2.5rem;
+}
+
+.story-timeline__line {
+  position: relative;
+  width: 2px;
+  background: rgba(30, 64, 175, 0.4);
+  border-radius: 999px;
+  margin-left: 0.45rem;
+}
+
+.story-timeline__line-inner {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #38bdf8, #a855f7);
+  transform-origin: top center;
+}
+
+.story-timeline__items {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.story-timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.story-timeline__year {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  padding-top: 0.35rem;
+}
+
+.story-timeline__card {
+  background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.16), transparent 60%), radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.12), transparent 60%), rgba(15, 23, 42, 0.95);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  box-shadow: 0 22px 40px rgba(15, 23, 42, 0.9), 0 0 0 1px rgba(15, 23, 42, 0.9);
+}
+
+.story-timeline__item-title {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.story-timeline__item-description {
+  font-size: 0.95rem;
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .story-timeline__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .story-timeline__line {
+    display: none;
+  }
+  .story-timeline__item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+  .story-timeline__year {
+    padding-top: 0;
+  }
+}/*# sourceMappingURL=OurStoryTimelineSection.css.map */
