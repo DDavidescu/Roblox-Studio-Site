@@ -1,0 +1,123 @@
+// src/components/Header/Header_scss/MobileMenu.scss
+
+.mobileMenuBtn {
+  display: none;
+  margin-left: auto;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+
+  span {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    height: 2px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: transform 220ms ease, top 220ms ease, opacity 180ms ease;
+
+    &:nth-child(1) { top: 14px; }
+    &:nth-child(2) { top: 21px; }
+    &:nth-child(3) { top: 28px; }
+  }
+
+  &.is-open {
+    span {
+      &:nth-child(1) { top: 21px; transform: rotate(45deg); }
+      &:nth-child(2) { opacity: 0; }
+      &:nth-child(3) { top: 21px; transform: rotate(-45deg); }
+    }
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.mobileMenu__panel {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  height: auto;
+  max-height: calc(100vh - 28px);
+  width: min(86vw, 360px);
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(12, 12, 16, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 14px;
+
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobileMenu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.mobileMenu__title {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.mobileMenu__close {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.92);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.mobileMenu__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mobileMenu__link {
+  display: block;
+  padding: 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+
+  &.is-active {
+    color: rgba(255, 255, 255, 0.96);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (max-width: 900px) {
+  .mobileMenuBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
