@@ -9,7 +9,8 @@
     radial-gradient(circle at top left, #2563eb22 0, transparent 55%),
     radial-gradient(circle at bottom right, #a855f722 0, transparent 55%),
     linear-gradient(145deg, #020617 0%, #020617 45%, #020617 100%);
-  overflow: hidden;
+  overflow-x: clip;
+  overflow-y: hidden;
   color: #f9fafb;
 
   &__inner {
@@ -17,6 +18,8 @@
     margin: 0 auto;
     padding: 0 clamp(1.5rem, 3vw, 3rem);
     position: relative;
+    box-sizing: border-box;
+    max-width: 100%;
   }
 
   &__bg-layer {
@@ -27,28 +30,34 @@
 
     &--glow {
       background:
-        radial-gradient(circle at 10% 0%, rgba(59, 130, 246, 0.16) 0, transparent 55%),
-        radial-gradient(circle at 85% 100%, rgba(168, 85, 247, 0.16) 0, transparent 55%);
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(59, 130, 246, 0.16) 0,
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at 85% 100%,
+          rgba(168, 85, 247, 0.16) 0,
+          transparent 55%
+        );
       mix-blend-mode: screen;
     }
 
     &--grid {
-      background-image: linear-gradient(
-          rgba(15, 23, 42, 0.8) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(15, 23, 42, 0.8) 1px,
-          transparent 1px
-        );
+      background-image:
+        linear-gradient(rgba(15, 23, 42, 0.8) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.8) 1px, transparent 1px);
       background-size: 40px 40px;
       opacity: 0.25;
       mask-image: radial-gradient(circle at center, black 0, transparent 70%);
     }
 
     &--particles {
-      background-image: radial-gradient(circle, rgba(148, 163, 184, 0.6) 0, transparent 60%);
+      background-image: radial-gradient(
+        circle,
+        rgba(148, 163, 184, 0.6) 0,
+        transparent 60%
+      );
       background-size: 180px 180px;
       opacity: 0.15;
       filter: blur(1px);
@@ -104,6 +113,15 @@
     gap: clamp(1.5rem, 2vw, 2rem);
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-auto-rows: minmax(230px, 1fr);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    /* critical: prevent grid items from forcing overflow */
+    > * {
+      min-width: 0;
+      max-width: 100%;
+    }
 
     @media (max-width: 1024px) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -112,23 +130,56 @@
     @media (max-width: 768px) {
       display: flex;
       overflow-x: auto;
-      padding-bottom: 0.75rem;
+      overflow-y: hidden;
+
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
+
       gap: 1rem;
+      padding-bottom: 0.9rem;
+
+      padding-left: 1.5rem;
+
+      > * {
+        flex: 0 0 auto;
+        width: clamp(280px, 82vw, 360px);
+        scroll-snap-align: start;
+      }
+
+      &::after {
+        content: "";
+        flex: 0 0 1.5rem;
+      }
 
       &::-webkit-scrollbar {
-        height: 5px;
+        height: 8px;
       }
 
       &::-webkit-scrollbar-track {
-        background: transparent;
+        background: rgba(148, 163, 184, 0.12);
+        border-radius: 999px;
       }
 
       &::-webkit-scrollbar-thumb {
-        background: rgba(148, 163, 184, 0.5);
+        background: linear-gradient(
+          90deg,
+          rgba(59, 130, 246, 0.75),
+          rgba(168, 85, 247, 0.75)
+        );
         border-radius: 999px;
+        border: 2px solid rgba(2, 6, 23, 0.65);
       }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(59, 130, 246, 0.95),
+          rgba(168, 85, 247, 0.95)
+        );
+      }
+
+      scrollbar-color: rgba(99, 102, 241, 0.9) rgba(148, 163, 184, 0.12);
+      scrollbar-width: thin;
     }
   }
 }
