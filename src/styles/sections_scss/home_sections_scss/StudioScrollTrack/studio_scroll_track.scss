@@ -1,4 +1,4 @@
-// src/components/info/StudioScrollTrack/studio_scroll_track.scss
+/* src/styles/sections_scss/home_sections_scss/StudioScrollTrack/studio_scroll_track.scss */
 
 .studio-scroll {
   position: relative;
@@ -10,13 +10,13 @@
   overflow: hidden;
 
   &__inner {
-    position: relative;
     height: 100%;
     width: 100%;
     margin: 0;
-    padding: clamp(2rem, 4vh, 3rem) 0; // no left/right padding
+    padding: clamp(2rem, 4vh, 3rem) 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   &__label {
@@ -24,43 +24,75 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: #9ca3af;
-    margin: 0 0 2rem 2rem; // small offset from left
+    text-align: center;
+    margin: 0 0 0.75rem;
+  }
+
+  &__progress {
+    width: min(520px, calc(100% - 2.5rem));
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.18);
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  &__progress-fill {
+    width: 100%;
+    height: 100%;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background: linear-gradient(90deg, #60a5fa, #a855f7);
+    border-radius: inherit;
+    will-change: transform;
+    display: block;
   }
 
   &__viewport {
     flex: 1;
-    position: relative;
+    width: 100%;
+    margin-top: clamp(1.75rem, 4vh, 3rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__mask {
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     display: flex;
     align-items: center;
-    width: 100%;
   }
 
   &__slides {
     display: flex;
-    height: 100%;
     width: 100%;
     will-change: transform;
   }
 
   &__slide {
     flex: 0 0 100%;
-    max-width: 100%;
+    min-width: 100%;
+    padding: 0 clamp(1.25rem, 4vw, 3rem);
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding: 0 2rem; // content touches near edges visually
+    text-align: center;
   }
 
   &__heading {
     font-size: clamp(2rem, 3.5vw, 2.8rem);
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
     letter-spacing: 0.02em;
   }
 
   &__body {
-    max-width: 48rem;
+    width: min(48rem, 100%);
+    margin: 0 auto;
     font-size: clamp(1rem, 1.3vw, 1.1rem);
     line-height: 1.6;
     color: #d1d5db;
@@ -71,12 +103,8 @@
       padding: 1.5rem 0;
     }
 
-    &__label {
-      margin: 0 0 1.25rem 1.25rem;
-    }
-
-    &__slide {
-      padding: 0 1.25rem;
+    &__viewport {
+      margin-top: 1.75rem;
     }
 
     &__heading {
@@ -85,6 +113,10 @@
 
     &__body {
       font-size: 0.95rem;
+    }
+
+    &__progress {
+      height: 7px;
     }
   }
 }
