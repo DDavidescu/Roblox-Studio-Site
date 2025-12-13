@@ -9,28 +9,14 @@ gsap.registerPlugin(ScrollTrigger);
 function StudioScrollTrack() {
   const sectionRef = useRef(null);
   const slidesWrapperRef = useRef(null);
+  const progressFillRef = useRef(null);
 
   const slides = [
-    {
-      heading: "Lorem ipsum dolor sit amet.",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id facilisis faucibus, risus lorem bibendum ex, id dignissim felis orci et augue."
-    },
-    {
-      heading: "Pellentesque habitant morbi tristique.",
-      body: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer tempus, risus at maximus dictum, dui nulla efficitur justo."
-    },
-    {
-      heading: "Suspendisse potenti integer feugiat.",
-      body: "Suspendisse potenti. Integer feugiat, urna quis consequat varius, nibh enim sagittis arcu, vitae sagittis lacus mi sit amet lectus. Curabitur laoreet lorem at leo vestibulum."
-    },
-    {
-      heading: "Curabitur non lorem in justo.",
-      body: "Curabitur non lorem in justo ullamcorper volutpat. Mauris eget nisl vitae leo tincidunt blandit. Aliquam erat volutpat. Integer mollis lorem sed magna egestas, a dignissim enim varius."
-    },
-    {
-      heading: "Vivamus vel nunc at sapien.",
-      body: "Vivamus vel nunc at sapien gravida ultricies. Maecenas eget lorem a lectus vestibulum interdum. Donec gravida convallis nibh, a tempor turpis ullamcorper eu."
-    }
+    { heading: "Lorem ipsum dolor sit amet.", body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc id facilisis faucibus, risus lorem bibendum ex, id dignissim felis orci et augue." },
+    { heading: "Pellentesque habitant morbi tristique.", body: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer tempus, risus at maximus dictum, dui nulla efficitur justo." },
+    { heading: "Suspendisse potenti integer feugiat.", body: "Suspendisse potenti. Integer feugiat, urna quis consequat varius, nibh enim sagittis arcu, vitae sagittis lacus mi sit amet lectus. Curabitur laoreet lorem at leo vestibulum." },
+    { heading: "Curabitur non lorem in justo.", body: "Curabitur non lorem in justo ullamcorper volutpat. Mauris eget nisl vitae leo tincidunt blandit. Aliquam erat volutpat. Integer mollis lorem sed magna egestas, a dignissim enim varius." },
+    { heading: "Vivamus vel nunc at sapien.", body: "Vivamus vel nunc at sapien gravida ultricies. Maecenas eget lorem a lectus vestibulum interdum. Donec gravida convallis nibh, a tempor turpis ullamcorper eu." },
   ];
 
   useEffect(() => {
@@ -38,8 +24,11 @@ function StudioScrollTrack() {
 
     const ctx = gsap.context(() => {
       const sections = gsap.utils.toArray(".studio-scroll__slide");
-
       if (!sections.length) return;
+
+      if (progressFillRef.current) {
+        gsap.set(progressFillRef.current, { scaleX: 0, transformOrigin: "left center" });
+      }
 
       const scrollTween = gsap.to(sections, {
         xPercent: -100 * (sections.length - 1),
@@ -51,8 +40,13 @@ function StudioScrollTrack() {
           snap: 1 / (sections.length - 1),
           start: "top top",
           end: () => "+=" + window.innerWidth * (sections.length - 1),
-          anticipatePin: 1
-        }
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (!progressFillRef.current) return;
+            gsap.set(progressFillRef.current, { scaleX: self.progress });
+          },
+        },
       });
 
       sections.forEach((slide) => {
@@ -73,8 +67,8 @@ function StudioScrollTrack() {
               containerAnimation: scrollTween,
               start: "left center",
               end: "right center",
-              toggleActions: "play reverse play reverse"
-            }
+              toggleActions: "play reverse play reverse",
+            },
           }
         );
       });
@@ -84,33 +78,30 @@ function StudioScrollTrack() {
   }, []);
 
   return (
-    <section
-      className="studio-scroll"
-      id="inside-the-studio"
-      ref={sectionRef}
-    >
+    <section className="studio-scroll" id="inside-the-studio" ref={sectionRef}>
       <div className="studio-scroll__inner">
-        <div className="studio-scroll__label">Lorem ipsum studio track</div>
+        <div className="studio-scroll__label">Karpath Games Studio Track</div>
+
+        <div className="studio-scroll__progress" aria-hidden="true">
+          <div className="studio-scroll__progress-fill" ref={progressFillRef} />
+        </div>
 
         <div className="studio-scroll__viewport">
-          <div
-            className="studio-scroll__slides"
-            ref={slidesWrapperRef}
-          >
-            {slides.map((slide, index) => (
-              <article
-                key={index}
-                className="studio-scroll__slide"
-              >
-                <h2 className="studio-scroll__heading">{slide.heading}</h2>
-                <p className="studio-scroll__body">{slide.body}</p>
-              </article>
-            ))}
+          <div className="studio-scroll__mask">
+            <div className="studio-scroll__slides" ref={slidesWrapperRef}>
+              {slides.map((slide, index) => (
+                <article key={index} className="studio-scroll__slide">
+                  <h2 className="studio-scroll__heading">{slide.heading}</h2>
+                  <p className="studio-scroll__body">{slide.body}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
+
 }
 
 export default StudioScrollTrack;
