@@ -1,6 +1,6 @@
 // src/animations/gsap/useGsapFooterSection.js
 
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -9,40 +9,31 @@ if (typeof window !== "undefined" && gsap && !gsap.core.globals().ScrollTrigger)
 }
 
 export default function useGsapFooterSection(footerRef, columnRefs) {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const footerEl = footerRef.current;
-    const columns = columnRefs.current.filter(Boolean);
-
     if (!footerEl) return;
 
+    const columns = (columnRefs.current || []).filter(Boolean);
+    const lower = footerEl.querySelector(".footer__lower");
+
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        footerEl,
-        { opacity: 0, y: 40 },
-        {
+      // keep footer background visible at all times
+      gsap.set(footerEl, { opacity: 1, y: 0 });
+
+      // animate only content (columns + lower row)
+      const targets = lower ? [...columns, lower] : columns;
+
+      if (targets.length) {
+        gsap.set(targets, { opacity: 0, y: 28 });
+        gsap.to(targets, {
           opacity: 1,
           y: 0,
-          duration: 1.1,
+          duration: 0.85,
           ease: "power2.out",
+          stagger: 0.12,
           scrollTrigger: {
             trigger: footerEl,
             start: "top bottom-=12%",
-            once: true,
-          },
-        }
-      );
-
-      if (columns.length) {
-        gsap.from(columns, {
-          opacity: 0,
-          y: 28,
-          duration: 0.8,
-          ease: "power2.out",
-          stagger: 0.12,
-          delay: 0.05,
-          scrollTrigger: {
-            trigger: footerEl,
-            start: "top bottom",
             once: true,
           },
         });
@@ -50,5 +41,5 @@ export default function useGsapFooterSection(footerRef, columnRefs) {
     }, footerEl);
 
     return () => ctx.revert();
-  }, [footerRef, columnRefs]);
+  }, []);
 }
