@@ -2,7 +2,7 @@
 
 export const footerData = {
   brand: {
-    name: "Roblox Game Studio",
+    name: "Karpath Games Studio",
     description:
       "A Roblox game studio crafting cinematic, replayable worlds filled with story, systems and discovery.",
     locationTagline: "Made with ♥ in Bucharest, Romania",

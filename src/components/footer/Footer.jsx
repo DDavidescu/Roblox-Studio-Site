@@ -32,7 +32,7 @@ function FooterSection() {
             </div>
             <div className="footer__logo-text-group">
               <span className="footer__logo-name">{footerData.brand.name}</span>
-              <span className="footer__logo-subtitle">Roblox Games Studio</span>
+              <span className="footer__logo-subtitle">Karpath Games Studio</span>
             </div>
           </div>
 
