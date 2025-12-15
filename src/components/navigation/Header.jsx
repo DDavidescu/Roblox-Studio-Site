@@ -13,7 +13,7 @@ function Header() {
             alt="Studio logo"
             className="header__logo-img"
           />
-          <span>StudioName</span>
+          <span>Karpath Games</span>
         </div>
 
         <nav className="header__nav">

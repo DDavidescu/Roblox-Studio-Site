@@ -1,11 +1,23 @@
 /* src/sections/games/GamesStatsCtaSection.scss */
 .games-stats-cta {
   position: relative;
-  padding: 2.5rem 0 3.5rem;
+  padding: 2.5rem clamp(1rem, 3vw, 2rem) 3.5rem;
+  overflow-x: clip;
+}
+@supports not (overflow: clip) {
+  .games-stats-cta {
+    overflow-x: hidden;
+  }
+}
+.games-stats-cta *,
+.games-stats-cta *::before,
+.games-stats-cta *::after {
+  box-sizing: border-box;
 }
 
 .games-stats-cta__inner {
   width: min(1400px, 100%);
+  max-width: 100%;
   margin: 0 auto 1rem;
   padding: 1.4rem clamp(1.5rem, 3vw, 3rem);
   border-radius: 1.75rem;
@@ -15,18 +27,21 @@
   justify-content: space-between;
   gap: 1.75rem;
   align-items: center;
+  min-width: 0;
 }
 
 .games-stats-cta__stats {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
+  min-width: 0;
 }
 
 .games-stats-cta__stat {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
+  min-width: 0;
 }
 
 .games-stats-cta__stat-label {
@@ -45,6 +60,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
+  min-width: 0;
 }
 
 .games-stats-cta__btn {
@@ -55,6 +71,7 @@
   text-decoration: none;
   cursor: pointer;
   transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, border-color 0.16s ease;
+  max-width: 100%;
 }
 
 .games-stats-cta__btn--primary {
@@ -83,13 +100,25 @@
 @media (max-width: 900px) {
   .games-stats-cta__inner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
   }
+  .games-stats-cta__stats,
   .games-stats-cta__ctas {
     width: 100%;
   }
   .games-stats-cta__btn {
-    flex: 1 1 auto;
+    flex: 1 1 220px;
     text-align: center;
+  }
+}
+@media (max-width: 420px) {
+  .games-stats-cta {
+    padding-inline: 1rem;
+  }
+  .games-stats-cta__inner {
+    padding-inline: 1.1rem;
+  }
+  .games-stats-cta__btn {
+    flex: 1 1 100%;
   }
 }/*# sourceMappingURL=GamesStatsCtaSection.css.map */
