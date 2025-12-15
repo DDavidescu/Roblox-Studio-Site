@@ -3,10 +3,8 @@ import { useMemo, useState } from "react";
 import "./GamePage_css/GamePage.scss";
 
 import { games } from "../../data/games";
-import { gameCollections } from "../../data/gameCollections";
-import SpotlightCarouselSection from "../../sections/games/SpotlightCarouselSection";
+import GamesIntroSection from "../../sections/games/GamesIntroSection";
 import GamesGridSection from "../../sections/games/GameGridSection";
-import CollectionsSection from "../../sections/games/CollectionsSection";
 import GamesStatsCtaSection from "../../sections/games/GamesStatsCtaSection";
 
 function GamesPage() {
@@ -16,10 +14,7 @@ function GamesPage() {
   const [sortBy, setSortBy] = useState("popular");
   const [platformFilter, setPlatformFilter] = useState("all");
 
-  const featuredGames = useMemo(
-    () => games.filter((g) => g.featured),
-    []
-  );
+  const featuredGames = useMemo(() => games.filter((g) => g.featured), []);
 
   const stats = useMemo(() => {
     const totalPlayers = games.reduce((sum, g) => sum + g.players, 0);
@@ -47,10 +42,7 @@ function GamesPage() {
 
         if (genreFilter !== "all" && game.genre !== genreFilter) return false;
 
-        if (
-          platformFilter !== "all" &&
-          !game.platforms.includes(platformFilter)
-        ) {
+        if (platformFilter !== "all" && !game.platforms.includes(platformFilter)) {
           return false;
         }
 
@@ -59,8 +51,7 @@ function GamesPage() {
       .sort((a, b) => {
         if (sortBy === "popular") return b.players - a.players;
         if (sortBy === "rating") return b.rating - a.rating;
-        if (sortBy === "new")
-          return new Date(b.releaseDate) - new Date(a.releaseDate);
+        if (sortBy === "new") return new Date(b.releaseDate) - new Date(a.releaseDate);
         return 0;
       });
   }, [searchQuery, primaryFilter, genreFilter, sortBy, platformFilter]);
@@ -70,9 +61,27 @@ function GamesPage() {
     return ["all", ...Array.from(set)];
   }, []);
 
+  const featuredForIntro = useMemo(() => {
+    const g = featuredGames?.[0] || games?.[0];
+    if (!g) return null;
+
+    return {
+      title: g.title,
+      description: g.description,
+      tags: [g.genre, ...(g.tags || [])].filter(Boolean).slice(0, 3).map((t) => String(t).toUpperCase()),
+      meta: [
+        { label: "Playing", value: String(g.players ?? 0) },
+        { label: "Visits", value: String(g.visits ?? 0) },
+        { label: "Likes", value: String(g.likes ?? 0) },
+      ],
+      image: g.image || g.thumbnail || g.coverImage,
+      to: g.slug ? `/games/${g.slug}` : "/games",
+    };
+  }, [featuredGames]);
+
   return (
     <main className="games-page">
-      <SpotlightCarouselSection featuredGames={featuredGames} />
+      {featuredForIntro && <GamesIntroSection featured={featuredForIntro} scrollToId="games-grid" />}
 
       <GamesGridSection
         games={filteredGames}
@@ -84,10 +93,6 @@ function GamesPage() {
         platformFilter={platformFilter}
         onPlatformFilterChange={setPlatformFilter}
       />
-
-      {gameCollections.length > 0 && (
-        <CollectionsSection collections={gameCollections} />
-      )}
 
       <GamesStatsCtaSection stats={stats} />
     </main>

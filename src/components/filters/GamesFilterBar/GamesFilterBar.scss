@@ -5,13 +5,7 @@
   flex-wrap: wrap;
   gap: 1rem 1.5rem;
   align-items: center;
-  justify-content: space-between;
-}
-
-.games-filter-bar__primary {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  justify-content: flex-end;
 }
 
 .games-filter-bar__secondary {
