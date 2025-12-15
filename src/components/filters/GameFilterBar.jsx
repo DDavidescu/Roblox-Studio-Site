@@ -1,10 +1,7 @@
 // src/components/filters/GamesFilterBar.jsx
 import "./GamesFilterBar/GamesFilterBar.scss";
-import FilterChip from "./FilterChip";
 
 function GamesFilterBar({
-  primaryFilter,
-  onPrimaryFilterChange,
   genres,
   genreFilter,
   onGenreFilterChange,
@@ -14,13 +11,6 @@ function GamesFilterBar({
   onPlatformFilterChange,
   compact = false,
 }) {
-  const primaryFilters = [
-    { id: "all", label: "All" },
-    { id: "popular", label: "Popular" },
-    { id: "new", label: "New" },
-    { id: "featured", label: "Featured" },
-  ];
-
   const platforms = [
     { id: "all", label: "All platforms" },
     { id: "desktop", label: "Desktop" },
@@ -30,17 +20,6 @@ function GamesFilterBar({
 
   return (
     <div className={`games-filter-bar ${compact ? "games-filter-bar--compact" : ""}`}>
-      <div className="games-filter-bar__primary">
-        {primaryFilters.map((f) => (
-          <FilterChip
-            key={f.id}
-            label={f.label}
-            active={primaryFilter === f.id}
-            onClick={() => onPrimaryFilterChange(f.id)}
-          />
-        ))}
-      </div>
-
       <div className="games-filter-bar__secondary">
         <div className="games-filter-bar__select-group">
           <label className="games-filter-bar__label">Genre</label>
