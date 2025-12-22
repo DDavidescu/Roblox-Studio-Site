@@ -1,19 +1,32 @@
+/* src/sections/about/ValuesSection/ValuesSection.scss */
 .values {
   position: relative;
   padding: clamp(4rem, 9vh, 5rem) 0;
   background: radial-gradient(circle at top left, #0b1120, #020617 55%), radial-gradient(circle at bottom right, #020617, #020617 80%);
   color: #e5e7eb;
+  overflow-x: clip;
+}
+@supports not (overflow: clip) {
+  .values {
+    overflow-x: hidden;
+  }
+}
+.values *,
+.values *::before,
+.values *::after {
+  box-sizing: border-box;
 }
 
 .values__inner {
   width: min(1200px, 100%);
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 clamp(1.5rem, 3vw, 3rem);
+  padding: 0 clamp(1rem, 3vw, 3rem);
 }
 
 .values__header {
   max-width: 40rem;
-  margin-bottom: 3rem;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
 }
 
 .values__eyebrow {
@@ -27,27 +40,36 @@
 .values__title {
   font-size: clamp(1.8rem, 2.2vw, 2.1rem);
   margin-bottom: 0.75rem;
+  overflow-wrap: anywhere;
 }
 
 .values__intro {
   font-size: 0.98rem;
   color: #cbd5f5;
+  overflow-wrap: anywhere;
 }
 
 .values__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.75rem;
+  gap: clamp(1rem, 2.2vw, 1.75rem);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .values__card {
   position: relative;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
   border-radius: 1.25rem;
   padding: 1.4rem 1.5rem 1.5rem;
   background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.15), transparent 60%), radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.12), transparent 60%), rgba(15, 23, 42, 0.96);
   border: 1px solid rgba(148, 163, 184, 0.45);
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9), 0 0 0 1px rgba(15, 23, 42, 0.95);
   transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .values__card:hover {
@@ -65,6 +87,7 @@
   justify-content: center;
   margin-bottom: 1rem;
   background: radial-gradient(circle at top, rgba(59, 130, 246, 0.45), transparent 70%);
+  flex: 0 0 auto;
 }
 
 .values__icon {
@@ -80,21 +103,45 @@
 .values__card-title {
   font-size: 1.02rem;
   margin-bottom: 0.4rem;
+  overflow-wrap: anywhere;
 }
 
 .values__card-text {
   font-size: 0.94rem;
   color: #d1d5db;
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .values__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 720px) {
+  .values__header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .values__intro {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 36rem;
+  }
   .values__grid {
     grid-template-columns: minmax(0, 1fr);
+    padding-inline: clamp(0.75rem, 4vw, 1.5rem);
+  }
+  .values__card {
+    padding: 1.25rem 1.25rem 1.35rem;
+  }
+}
+@media (max-width: 420px) {
+  .values__inner {
+    padding: 0 1rem;
+  }
+  .values__grid {
+    padding-inline: 0.5rem;
   }
 }/*# sourceMappingURL=ValuesSection.css.map */

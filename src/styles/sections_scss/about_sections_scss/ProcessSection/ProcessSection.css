@@ -1,21 +1,31 @@
+/* src/styles/sections_scss/about_sections_scss/ProcessSection/ProcessSection.scss */
 .process {
   position: relative;
   padding: clamp(4rem, 9vh, 5rem) 0;
   background: radial-gradient(circle at top, #020617, #020617 70%), radial-gradient(circle at bottom, #020617, #020617 80%);
   color: #e5e7eb;
+  overflow-x: clip;
 }
-
+@supports not (overflow: clip) {
+  .process {
+    overflow-x: hidden;
+  }
+}
+.process *,
+.process *::before,
+.process *::after {
+  box-sizing: border-box;
+}
 .process__inner {
   width: min(1100px, 100%);
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 clamp(1.5rem, 3vw, 3rem);
+  padding: 0 clamp(1rem, 3vw, 3rem);
 }
-
 .process__header {
   max-width: 40rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: clamp(2rem, 5vw, 2.5rem);
 }
-
 .process__eyebrow {
   font-size: 0.8rem;
   letter-spacing: 0.14em;
@@ -23,53 +33,55 @@
   color: #a5b4fc;
   margin-bottom: 0.75rem;
 }
-
 .process__title {
   font-size: clamp(1.8rem, 2.3vw, 2.1rem);
   margin-bottom: 0.75rem;
+  overflow-wrap: anywhere;
 }
-
 .process__intro {
   font-size: 0.98rem;
   color: #cbd5f5;
   max-width: 34rem;
+  overflow-wrap: anywhere;
 }
-
 .process__track {
-  margin-top: 2.25rem;
+  margin-top: clamp(1.75rem, 4vw, 2.25rem);
+  min-width: 0;
+  max-width: 100%;
 }
-
 .process__progress {
   position: relative;
   height: 4px;
   border-radius: 999px;
   background: rgba(30, 64, 175, 0.5);
   overflow: hidden;
-  margin-bottom: 1.75rem;
+  margin-bottom: clamp(1.25rem, 3vw, 1.75rem);
 }
-
 .process__progress-fill {
   position: absolute;
   inset: 0;
   background: linear-gradient(to right, #38bdf8, #a855f7);
   transform-origin: left center;
 }
-
 .process__steps {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: clamp(1rem, 2.2vw, 1.5rem);
+  min-width: 0;
+  max-width: 100%;
 }
-
 .process__step {
   position: relative;
+  min-width: 0;
+  max-width: 100%;
   padding: 1.3rem 1.2rem 1.4rem;
   border-radius: 1.2rem;
   background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 60%), rgba(15, 23, 42, 0.96);
   border: 1px solid rgba(148, 163, 184, 0.4);
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9), 0 0 0 1px rgba(15, 23, 42, 0.96);
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
-
 .process__step-index {
   width: 1.8rem;
   height: 1.8rem;
@@ -81,31 +93,51 @@
   font-size: 0.8rem;
   margin-bottom: 0.55rem;
   color: #cbd5f5;
+  flex: 0 0 auto;
 }
-
 .process__step-icon {
   font-size: 1.4rem;
   margin-bottom: 0.6rem;
+  flex: 0 0 auto;
 }
-
 .process__step-title {
   font-size: 1rem;
   margin-bottom: 0.35rem;
+  overflow-wrap: anywhere;
 }
-
 .process__step-text {
   font-size: 0.9rem;
   color: #d1d5db;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
-
 @media (max-width: 1024px) {
   .process__steps {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 720px) {
+  .process__header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .process__intro {
+    margin-left: auto;
+    margin-right: auto;
+  }
   .process__steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 420px) {
+  .process__inner {
+    padding: 0 1rem;
+  }
+  .process__steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .process__step {
+    padding: 1.2rem 1.15rem 1.3rem;
   }
 }/*# sourceMappingURL=ProcessSection.css.map */
