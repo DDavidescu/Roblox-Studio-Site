@@ -1,10 +1,23 @@
 /* src/sections/careers/WhyWorkHereSection.scss */
 .careers-values {
+  position: relative;
   padding: clamp(3.5rem, 8vh, 5rem) 0;
+  overflow-x: clip;
+}
+@supports not (overflow: clip) {
+  .careers-values {
+    overflow-x: hidden;
+  }
+}
+.careers-values *,
+.careers-values *::before,
+.careers-values *::after {
+  box-sizing: border-box;
 }
 
 .careers-values__inner {
   width: min(1100px, 100%);
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 3.5vw, 3rem);
 }
@@ -24,22 +37,29 @@
 .careers-values__title {
   font-size: 1.7rem;
   margin-top: 0.3rem;
+  overflow-wrap: anywhere;
 }
 
 .careers-values__subtitle {
   margin-top: 0.4rem;
   font-size: 0.95rem;
   color: #cbd5f5;
+  overflow-wrap: anywhere;
 }
 
 .careers-values__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: clamp(1rem, 2.4vw, 1.5rem);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .careers-values__card {
   position: relative;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
   padding: 1.1rem 1.1rem 1.2rem;
   border-radius: 1rem;
   border: 1px solid rgba(148, 163, 184, 0.45);
@@ -48,6 +68,8 @@
   transform: translateY(10px);
   opacity: 0;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .careers-values__card:hover {
@@ -63,16 +85,19 @@
   margin-bottom: 0.5rem;
   background: conic-gradient(from 180deg, #22c55e, #0ea5e9, #a855f7, #22c55e);
   box-shadow: 0 0 16px rgba(34, 197, 94, 0.6);
+  flex: 0 0 auto;
 }
 
 .careers-values__card-title {
   font-size: 1rem;
   margin-bottom: 0.35rem;
+  overflow-wrap: anywhere;
 }
 
 .careers-values__card-text {
   font-size: 0.9rem;
   color: #cbd5f5;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 900px) {
@@ -81,7 +106,30 @@
   }
 }
 @media (max-width: 640px) {
+  .careers-values__header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .careers-values__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 36rem;
+  }
   .careers-values__grid {
     grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    padding-inline: clamp(0.75rem, 4vw, 1.5rem);
+  }
+  .careers-values__card {
+    max-width: 42rem;
+  }
+}
+@media (max-width: 420px) {
+  .careers-values__inner {
+    padding: 0 1rem;
+  }
+  .careers-values__grid {
+    padding-inline: 0.5rem;
   }
 }/*# sourceMappingURL=WhyWorkHereSection.css.map */

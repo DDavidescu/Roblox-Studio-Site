@@ -1,10 +1,23 @@
 /* src/sections/careers/OpenPositionsSection.scss */
 .careers-open {
+  position: relative;
   padding: clamp(3.5rem, 8vh, 5rem) 0;
+  overflow-x: clip;
+}
+@supports not (overflow: clip) {
+  .careers-open {
+    overflow-x: hidden;
+  }
+}
+.careers-open *,
+.careers-open *::before,
+.careers-open *::after {
+  box-sizing: border-box;
 }
 
 .careers-open__inner {
   width: min(1100px, 100%);
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 3.5vw, 3rem);
 }
@@ -15,6 +28,12 @@
   align-items: flex-end;
   gap: 1.5rem;
   margin-bottom: 1.5rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.careers-open__header > * {
+  min-width: 0;
 }
 
 .careers-open__eyebrow {
@@ -27,6 +46,7 @@
 .careers-open__title {
   font-size: 1.7rem;
   margin-top: 0.3rem;
+  overflow-wrap: anywhere;
 }
 
 .careers-open__subtitle {
@@ -34,6 +54,7 @@
   font-size: 0.95rem;
   color: #cbd5f5;
   max-width: 34rem;
+  overflow-wrap: anywhere;
 }
 
 .careers-open__list {
@@ -41,6 +62,13 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.careers-open__list > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .careers-open__empty {
@@ -52,5 +80,17 @@
 @media (max-width: 900px) {
   .careers-open__list {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .careers-open__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+}
+@media (max-width: 640px) {
+  .careers-open__inner {
+    padding: 0 1rem;
   }
 }/*# sourceMappingURL=OpenPositionsSection.css.map */

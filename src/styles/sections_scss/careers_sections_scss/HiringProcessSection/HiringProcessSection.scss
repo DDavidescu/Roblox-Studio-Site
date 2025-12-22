@@ -1,10 +1,24 @@
 /* src/sections/careers/HiringProcessSection.scss */
+
 .careers-process {
+  position: relative;
   padding: clamp(3.5rem, 8vh, 5rem) 0;
+  overflow-x: clip;
+
+  @supports not (overflow: clip) {
+    overflow-x: hidden;
+  }
+
+  * ,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 }
 
 .careers-process__inner {
   width: min(1100px, 100%);
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 3.5vw, 3rem);
 }
@@ -24,17 +38,21 @@
 .careers-process__title {
   font-size: 1.7rem;
   margin-top: 0.3rem;
+  overflow-wrap: anywhere;
 }
 
 .careers-process__subtitle {
   margin-top: 0.4rem;
   font-size: 0.95rem;
   color: #cbd5f5;
+  overflow-wrap: anywhere;
 }
 
 .careers-process__timeline {
   position: relative;
   padding-top: 1.5rem;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .careers-process__line {
@@ -44,6 +62,7 @@
   right: 0;
   height: 2px;
   background: rgba(30, 64, 175, 0.4);
+  max-width: 100%;
 }
 
 .careers-process__line-fill {
@@ -53,16 +72,21 @@
   height: 2px;
   width: 0;
   background: linear-gradient(90deg, #22c55e, #06b6d4);
+  max-width: 100%;
 }
 
 .careers-process__steps {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1.25rem;
+  gap: clamp(1rem, 2.4vw, 1.25rem);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .careers-process__step {
   position: relative;
+  min-width: 0;
+  max-width: 100%;
   opacity: 0;
   transform: translateY(14px);
 }
@@ -75,17 +99,20 @@
   background: #020617;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
   margin-bottom: 0.5rem;
+  flex: 0 0 auto;
 }
 
 .careers-process__step-title {
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
+  overflow-wrap: anywhere;
 }
 
 .careers-process__step-text {
   font-size: 0.85rem;
   color: #cbd5f5;
+  overflow-wrap: anywhere;
 }
 
 @media (max-width: 900px) {
@@ -94,14 +121,75 @@
   }
 }
 
+@media (max-width: 720px) {
+  .careers-process__header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .careers-process__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 30rem;
+  }
+}
+
 @media (max-width: 640px) {
+  .careers-process__timeline {
+    padding-top: 0;
+  }
+
   .careers-process__steps {
     grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    padding-left: 1.25rem;
+  }
+
+  .careers-process__step {
+    padding-left: 0.5rem;
   }
 
   .careers-process__line,
   .careers-process__line-fill {
-    top: auto;
-    bottom: 0;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    left: 0.35rem;
+    right: auto;
+    width: 2px;
+    height: auto;
+    transform: none;
+  }
+
+  .careers-process__line-fill {
+    width: 2px;
+    height: 0;
+    background: linear-gradient(to bottom, #22c55e, #06b6d4);
+  }
+
+  .careers-process__step-marker {
+    position: absolute;
+    left: -1.25rem;
+    top: 0.15rem;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .careers-process__inner {
+    padding: 0 1rem;
+  }
+
+  .careers-process__steps {
+    padding-left: 1.1rem;
+  }
+
+  .careers-process__line,
+  .careers-process__line-fill {
+    left: 0.25rem;
+  }
+
+  .careers-process__step-marker {
+    left: -1.15rem;
   }
 }
