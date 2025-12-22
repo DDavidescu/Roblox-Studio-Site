@@ -1,10 +1,27 @@
 /* src/sections/careers/CareersFaqSection.scss */
+
 .careers-faq {
+  position: relative;
   padding: clamp(3.5rem, 8vh, 5rem) 0;
+  overflow-x: clip;
+  z-index: 1;
+
+  @supports not (overflow: clip) {
+    overflow-x: hidden;
+  }
+
+  * ,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 }
 
 .careers-faq__inner {
+  position: relative;
+  z-index: 1;
   width: min(900px, 100%);
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 clamp(1.5rem, 3.5vw, 3rem);
 }
@@ -24,10 +41,32 @@
 .careers-faq__title {
   font-size: 1.7rem;
   margin-top: 0.3rem;
+  overflow-wrap: anywhere;
 }
 
 .careers-faq__subtitle {
   margin-top: 0.4rem;
   font-size: 0.95rem;
   color: #cbd5f5;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  .careers-faq__header {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .careers-faq__subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 32rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .careers-faq__inner {
+    padding: 0 1rem;
+  }
 }
