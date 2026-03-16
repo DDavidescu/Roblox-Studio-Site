@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { mainNavLinks } from "../../data/navigation";
 import "./Header_css/Header.scss";
 import MobileMenu from "./MobileMenu";
+import placeholderImgLogo from "../../assets/images/logo/karpathLogo.png";
 
 function Header() {
   return (
@@ -9,7 +10,7 @@ function Header() {
       <div className="header__inner container">
         <div className="header__logo">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+            src={placeholderImgLogo}
             alt="Studio logo"
             className="header__logo-img"
           />

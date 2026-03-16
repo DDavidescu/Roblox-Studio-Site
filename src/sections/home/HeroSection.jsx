@@ -2,7 +2,8 @@ import React, { useRef, useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import "../../styles/sections_scss/home_sections_scss/heroSection/hero_section.scss";
-import placeholderImg from "../../assets/images/games/placeholder.webp";
+// import placeholderImg from "../../assets/images/games/placeholder.webp";
+import karpathLogoGlowlightbg from "../../assets/images/logo/karpathLogoGlowLightbg.jpg";
 
 const HeroSection = () => {
   const heroRef = useRef(null);
@@ -197,7 +198,7 @@ const HeroSection = () => {
             <div className="glow-effect"></div>
             <img
               className="heroImage"
-              src={placeholderImg}
+              src={karpathLogoGlowlightbg}
               alt="Game Screenshot"
               draggable="false"
             />
