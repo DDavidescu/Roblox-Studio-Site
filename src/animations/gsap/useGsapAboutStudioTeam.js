@@ -30,11 +30,12 @@ function useGsapAboutStudioTeam(sectionRef) {
           trigger: ".studio-team__grid",
           start: "top 80%",
         },
-        y: 40,
         opacity: 0,
+        scale: 0.96,
         duration: 0.8,
         stagger: 0.1,
         ease: "power3.out",
+        clearProps: "transform",
       });
     }, sectionRef);
 
