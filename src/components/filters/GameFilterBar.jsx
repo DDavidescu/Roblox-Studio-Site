@@ -15,7 +15,6 @@ function GamesFilterBar({
     { id: "all", label: "All platforms" },
     { id: "desktop", label: "Desktop" },
     { id: "mobile", label: "Mobile" },
-    { id: "console", label: "Console" },
   ];
 
   return (

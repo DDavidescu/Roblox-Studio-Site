@@ -100,7 +100,9 @@
 .studio-team__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
   gap: clamp(1rem, 2.2vw, 1.75rem);
+  align-items: stretch;
   min-width: 0;
   max-width: 100%;
 }
@@ -110,6 +112,7 @@
   min-width: 0;
   max-width: 100%;
   width: 100%;
+  height: 100%;
   padding: 1.3rem 1.4rem 1.5rem;
   border-radius: 1.25rem;
   background:
@@ -122,6 +125,7 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 1rem;
+  align-items: start;
   transition:
     transform 200ms ease,
     box-shadow 200ms ease,
@@ -157,6 +161,9 @@
 }
 
 .studio-team__member-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   min-width: 0;
 }
 

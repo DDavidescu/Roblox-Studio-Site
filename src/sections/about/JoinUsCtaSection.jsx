@@ -1,5 +1,6 @@
 // src/sections/about/JoinUsCtaSection.jsx
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import "../../styles/sections_scss/about_sections_scss/JoinUsCtaSection/JoinUsCtaSection.scss";
 
 import useGsapAboutJoinUs from "../../animations/gsap/useGsapAboutJoinUs";
@@ -27,9 +28,9 @@ function JoinUsCtaSection() {
               Explore open roles and learn how we work as a remote-first, focused crew building
               ambitious Roblox experiences.
             </p>
-            <button className="join-us__button join-us__button--primary">
+            <Link to="/careers" className="join-us__button join-us__button--primary">
               View careers
-            </button>
+            </Link>
           </article>
 
           <article className="join-us__card">
@@ -38,9 +39,14 @@ function JoinUsCtaSection() {
               Collaborate on IP, events, or new experiences. Tell us what you&apos;d like to build
               and we&apos;ll reach back.
             </p>
-            <button className="join-us__button join-us__button--secondary">
+            <a
+              className="join-us__button join-us__button--secondary"
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
               Contact studio
-            </button>
+            </a>
           </article>
         </div>
       </div>
