@@ -166,12 +166,11 @@ const HeroSection = () => {
           </p>
 
           <h1 className="title" id="hero-heading" data-animate="left">
-            Lorem ipsum dolor sit amet.
+            Your next adventure, just a click away.
           </h1>
 
           <p className="subtitle" data-animate="left">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus laborum
-            doloremque porro maiores eveniet.
+            We create the worlds you’ve been waiting to explore. Built by players, for players.
           </p>
 
           <div className="ctaRow" data-animate="left">

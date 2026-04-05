@@ -27,8 +27,16 @@ function OurStoryTimelineSection() {
           </div>
           <div className="story-timeline__items">
             {timelineMilestones.map((item) => (
-              <article key={item.year} className="story-timeline__item">
-                <div className="story-timeline__year">{item.year}</div>
+              <article
+                key={`${item.year}-${item.month ?? "monthless"}-${item.title}`}
+                className="story-timeline__item"
+              >
+                <div className="story-timeline__date">
+                  {item.month && (
+                    <div className="story-timeline__month">{item.month}</div>
+                  )}
+                  <div className="story-timeline__year">{item.year}</div>
+                </div>
                 <div className="story-timeline__card">
                   <h3 className="story-timeline__item-title">{item.title}</h3>
                   <p className="story-timeline__item-description">

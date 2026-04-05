@@ -80,7 +80,7 @@ function StudioScrollTrack() {
   return (
     <section className="studio-scroll" id="inside-the-studio" ref={sectionRef}>
       <div className="studio-scroll__inner">
-        <div className="studio-scroll__label">Karpath Games Studio Track</div>
+        <div className="studio-scroll__label">Karpath Games Studio</div>
 
         <div className="studio-scroll__progress" aria-hidden="true">
           <div className="studio-scroll__progress-fill" ref={progressFillRef} />

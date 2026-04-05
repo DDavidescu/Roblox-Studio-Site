@@ -78,50 +78,6 @@ export const careersPerks = [
 ];
 
 export const careersOpenPositions = [
-  {
-    id: "senior-roblox-engineer",
-    title: "Senior Roblox Gameplay Engineer",
-    department: "Engineering",
-    location: "Remote",
-    seniority: "Senior",
-    type: "Full-Time",
-    summary:
-      "Own core gameplay systems, combat feel, and moment-to-moment interaction in our flagship Roblox experiences.",
-    tags: ["Remote", "Full-Time", "Senior", "Lua", "Roblox Studio"],
-  },
-  {
-    id: "technical-artist",
-    title: "Technical Artist (VFX / Shaders)",
-    department: "Art",
-    location: "Remote",
-    seniority: "Mid",
-    type: "Full-Time",
-    summary:
-      "Bridge art and engineering with performant VFX, shaders, and visual systems that support cinematic worlds.",
-    tags: ["Remote", "Full-Time", "Mid-Level", "VFX"],
-  },
-  {
-    id: "game-designer",
-    title: "Game Designer (Systems & Economy)",
-    department: "Design",
-    location: "Remote",
-    seniority: "Mid",
-    type: "Full-Time",
-    summary:
-      "Design progression, rewards, and systems that keep players coming back without relying on dark patterns.",
-    tags: ["Remote", "Full-Time", "Systems", "Economy"],
-  },
-  {
-    id: "producer",
-    title: "Production Lead",
-    department: "Production",
-    location: "Remote",
-    seniority: "Senior",
-    type: "Full-Time",
-    summary:
-      "Keep teams unblocked, scopes realistic, and roadmaps aligned across multiple Roblox experiences.",
-    tags: ["Remote", "Full-Time", "Senior", "Production"],
-  },
 ];
 
 export const careersProcessSteps = [

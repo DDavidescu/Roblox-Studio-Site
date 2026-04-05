@@ -15,24 +15,12 @@ export const footerData = {
   ],
   worlds: [
     {
-      name: "Starfall District",
+      name: "Troll World Obby",
       tag: "Adventure",
     },
     {
-      name: "Quantum Speedway",
-      tag: "Racing",
-    },
-    {
-      name: "Neon Tycoon",
-      tag: "Simulator",
-    },
-    {
-      name: "Skyforge Arena",
-      tag: "PvP",
-    },
-    {
-      name: "Lumin City Nights",
-      tag: "Roleplay",
+      name: "Hide and Seek",
+      tag: "Action",
     },
   ],
   socialLinks: [

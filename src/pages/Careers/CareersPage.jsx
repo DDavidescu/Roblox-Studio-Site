@@ -8,7 +8,6 @@ import CulturePerksSection from "../../sections/careers/CulturePerksSection";
 import OpenPositionsSection from "../../sections/careers/OpenPositionsSection";
 import HiringProcessSection from "../../sections/careers/HiringProcessSection";
 import CareersFaqSection from "../../sections/careers/CareersFaqSection";
-import CareersFinalCtaSection from "../../sections/careers/CareersFinalCtaSection";
 
 import {
   careersHeroBadges,
@@ -29,13 +28,13 @@ function CareersPage() {
       <CareersHeroSection
         studioName={studioName}
         badges={careersHeroBadges}
+        openRoleCount={careersOpenPositions.length}
       />
       <WhyWorkHereSection values={careersValues} />
       <CulturePerksSection perks={careersPerks} />
       <OpenPositionsSection positions={careersOpenPositions} />
       <HiringProcessSection steps={careersProcessSteps} />
       <CareersFaqSection items={careersFaqItems} />
-      <CareersFinalCtaSection />
     </main>
   );
 }

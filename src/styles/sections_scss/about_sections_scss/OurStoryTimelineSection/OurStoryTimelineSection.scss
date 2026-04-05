@@ -93,6 +93,21 @@
   max-width: 100%;
 }
 
+.story-timeline__date {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.story-timeline__month {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #a5b4fc;
+  min-width: 0;
+}
+
 .story-timeline__year {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
@@ -165,6 +180,11 @@
     padding-inline: 0;
   }
 
+  .story-timeline__date {
+    gap: 0.1rem;
+  }
+
+  .story-timeline__month,
   .story-timeline__year {
     padding-top: 0;
     font-size: 0.85rem;

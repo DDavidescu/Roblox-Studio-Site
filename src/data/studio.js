@@ -44,7 +44,7 @@ export const studioPillars = [
 // ABOUT PAGE DATA
 
 export const aboutHeroContent = {
-  title: "About NebulaForge Studio",
+  title: "About Karpath Games Studio",
   subheading: "Building worlds where imagination and systems design collide.",
   intro:
     "We are a Roblox games studio focused on crafting replayable, social-first experiences. From tiny prototypes to live universes, our team lives in the space between code, art, and community.",
@@ -52,28 +52,32 @@ export const aboutHeroContent = {
 
 export const timelineMilestones = [
   {
-    year: "2019",
+    year: "2025",
+    month: "December",
     title: "Studio founded",
     description:
       "Started as a small group of builders and scripters experimenting with new Roblox mechanics and game loops.",
   },
   {
-    year: "2020",
-    title: "First breakout hit",
+    year: "2026",
+    month: "February",
+    title: "First Game Released",
     description:
       "Our first front-page title introduced our approach to systems-driven progression and collaborative gameplay.",
   },
   {
-    year: "2022",
-    title: "Growing the universe",
+    year: "2026",
+    month: "April",
+    title: "First Breakout hit",
     description:
-      "Expanded into multiple live games sharing tech, tools, and a connected creative universe.",
+      "We released the title that solidified our team in the roblox scene",
   },
   {
-    year: "2024",
-    title: "Global, remote-first team",
+    year: "2026",
+    month: "Onward",
+    title: "Refining our team",
     description:
-      "Designers, engineers, artists, and producers are now distributed across multiple time zones and cultures.",
+      "We are now expanding across multiple regions, prioritising remote work",
   },
 ];
 
@@ -135,28 +139,28 @@ export const studioStats = [
 
 export const studioTeam = [
   {
-    id: "founder",
-    name: "Alex Rivera",
+    id: "director",
+    name: "Tiberiu Musat",
     role: "Studio Director",
-    blurb: "Leads vision, production, and partnerships across all worlds.",
+    blurb: "Leads vision, manages partnerships all across the world.",
   },
   {
-    id: "design",
-    name: "Maya Chen",
-    role: "Lead Game Designer",
-    blurb: "Systems, progression, and economy design across the portfolio.",
+    id: "producer",
+    name: "Andrei Racoviteanu",
+    role: "Producer",
+    blurb: "Handles resources, schedules, and cross-team workflows.",
   },
   {
     id: "engineering",
-    name: "Luca Martins",
+    name: "Luca Christian",
     role: "Lead Engineer",
-    blurb: "Scalable backend, live ops tooling, and game services.",
+    blurb: "Architect of core game tech, platform optimization, and tools.",
   },
   {
     id: "art",
-    name: "Samira K",
-    role: "Art Director",
-    blurb: "Cohesive visual language for characters, environments, and UI.",
+    name: "Robert Troznay",
+    role: "3D Modeler",
+    blurb: "Directs prop and environment creation for fidelity.",
   },
 ];
 
@@ -195,26 +199,33 @@ export const processSteps = [
 
 export const partners = [
   { id: "roblox", name: "Roblox", label: "Platform Partner" },
-  { id: "devrel", name: "DevRel", label: "Developer Programs" },
-  { id: "brand", name: "Brand X", label: "IP Collaboration" },
 ];
 
 export const highlights = [
   {
     id: "front-page",
     title: "Front Page Features",
+    ctaLabel: "Browse games",
+    href: "/games",
+    isExternal: false,
     description:
       "Multiple titles featured on Roblox’s front page and category carousels.",
   },
   {
     id: "events",
     title: "Seasonal Live Events",
+    ctaLabel: "Watch event coverage",
+    href: "https://www.youtube.com/results?search_query=Troll+World+Obby+update",
+    isExternal: true,
     description:
       "Millions of players engaged through custom events and updates.",
   },
   {
     id: "press",
     title: "Community Spotlight",
+    ctaLabel: "See fan shorts",
+    href: "https://www.tiktok.com/search?q=Troll%20World%20Obby",
+    isExternal: true,
     description:
       "Recognized in creator showcases for production quality and retention.",
   },

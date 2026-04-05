@@ -11,6 +11,7 @@ import JobModal from "../../components/cards/JobModal";
 function OpenPositionsSection({ positions }) {
   const sectionRef = useRef(null);
   const listRef = useRef(null);
+  const hasPositions = positions.length > 0;
 
   const [department, setDepartment] = useState("All");
   const [location, setLocation] = useState("All");
@@ -29,46 +30,61 @@ function OpenPositionsSection({ positions }) {
   }, [positions, department, location, seniority]);
 
   return (
-    <section className="careers-open" ref={sectionRef}>
+    <section className="careers-open" ref={sectionRef} id="open-positions">
       <div className="careers-open__inner">
         <header className="careers-open__header">
           <div>
             <p className="careers-open__eyebrow">Open positions</p>
             <h2 className="careers-open__title">Roles we&apos;re hiring for.</h2>
             <p className="careers-open__subtitle">
-              Don&apos;t see a perfect fit? Reach out anyway. We read every
-              application and keep a close eye on strong generalists.
+              {hasPositions
+                ? "Don't see a perfect fit? Reach out anyway. We read every application and keep a close eye on strong generalists."
+                : "No open positions right now, but we're growing and new roles will be available soon."}
             </p>
           </div>
         </header>
 
-        <JobsFilterBar
-          department={department}
-          setDepartment={setDepartment}
-          location={location}
-          setLocation={setLocation}
-          seniority={seniority}
-          setSeniority={setSeniority}
-        />
+        {hasPositions ? (
+          <>
+            <JobsFilterBar
+              department={department}
+              setDepartment={setDepartment}
+              location={location}
+              setLocation={setLocation}
+              seniority={seniority}
+              setSeniority={setSeniority}
+            />
 
-        <div className="careers-open__list" ref={listRef}>
-          {filteredPositions.length === 0 && (
-            <p className="careers-open__empty">
-              No roles match these filters yet. Try expanding your search or
-              send us a speculative application.
+            <div className="careers-open__list" ref={listRef}>
+              {filteredPositions.length === 0 && (
+                <p className="careers-open__empty">
+                  No roles match these filters yet. Try expanding your search or
+                  send us a speculative application.
+                </p>
+              )}
+
+              <AnimatePresence>
+                {filteredPositions.map((job) => (
+                  <JobCard
+                    key={job.id}
+                    job={job}
+                    onClick={() => setActiveJob(job)}
+                  />
+                ))}
+              </AnimatePresence>
+            </div>
+          </>
+        ) : (
+          <div className="careers-open__notice">
+            <p className="careers-open__notice-line">No open positions right now.</p>
+            <p className="careers-open__notice-line">
+              But we&apos;re growing, and new roles will be available soon.
             </p>
-          )}
-
-          <AnimatePresence>
-            {filteredPositions.map((job) => (
-              <JobCard
-                key={job.id}
-                job={job}
-                onClick={() => setActiveJob(job)}
-              />
-            ))}
-          </AnimatePresence>
-        </div>
+            <p className="careers-open__notice-line">
+              Got a great idea or think you&apos;d be a good fit? Reach out.
+            </p>
+          </div>
+        )}
       </div>
 
       <JobModal job={activeJob} onClose={() => setActiveJob(null)} />
